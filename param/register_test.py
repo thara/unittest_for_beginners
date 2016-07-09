@@ -5,26 +5,24 @@ from param.register import *
 
 
 @pytest.mark.parametrize("age,expected", [
-    (20, True),
-    (19, False),  # !!!
+    (19, True),
+    (18, True),
+    (17, False),
 ])
 def test_can_register(age, expected):
     assert can_register(age) is expected
 
 
 @pytest.mark.parametrize(
-    "age,  is_register_mail_magazine,  use_past_month,  expected" , [
-    (25  , True                      , 5              , False)     ,   # !!!
-    (26  , False                     , 3              , False)    ,
-    (31  , True                      , 0              , False)    ,
-    (53  , False                     , 0              , False)    ,
-    (17  , True                      , 2              , False)    ,
-    (15  , False                     , 1              , False)    ,
-    (9   , True                      , 0              , False)    ,
-    (18  , False                     , 0              , False)    ,
+    "age , is_register_mail_magazine , use_past_month , expected" , [
+    (20  , True                      , 1              , True)     ,
+    (19  , True                      , 1              , False)    ,
+    (20  , False                     , 1              , False)    ,
+    (20  , True                      , 0              , False)    ,
 ])
 def test_is_special_member(age, is_register_mail_magazine, use_past_month, expected):
-    assert is_special_member(age, is_register_mail_magazine, use_past_month) is expected
+    actual = is_special_member(age, is_register_mail_magazine, use_past_month)
+    assert actual is expected
 
 
 
