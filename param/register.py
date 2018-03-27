@@ -7,7 +7,7 @@ def can_register(age):
     Args:
         age: 年齢
     Returns:
-        18歳異様ならば真、18歳未満ならば偽
+        18歳以上ならば真、18歳未満ならば偽
     """
     return 18 <= age
 
